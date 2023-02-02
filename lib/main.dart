@@ -17,7 +17,9 @@ void main() async{
     Widget widget;
 
     dynamic onBoarding = CacheHelper.getData(key: 'onBoarding');
-    ApiNames.token = CacheHelper.getData(key: 'token');
+    var token = ApiNames.token;
+    token = CacheHelper.getData(key: 'token');
+    print('token = '+token);
 
     if(onBoarding != null){
       if(ApiNames.token != null){

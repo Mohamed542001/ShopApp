@@ -13,6 +13,10 @@ class HomeCubit extends Cubit<HomeState> {
 
   int currentIndex = 0;
   HomeModel homeModel = HomeModel();
+  Map<int?,bool?> favorites={};
+
+
+
   void changeBottom(index) {
     currentIndex = index;
     emit(HomeChangeBottomNavState());
@@ -30,6 +34,15 @@ class HomeCubit extends Cubit<HomeState> {
       homeModel = HomeModel.fromJson(value.data);
       print(homeModel.data!.banners![0].image);
       print(homeModel.status);
+
+      homeModel.data?.products?.forEach((element) {
+        favorites.addAll({
+          element.id:element.inFavorites,
+        });
+      });
+      
+      print(favorites.toString());
+
       emit(HomeSuccessState());
     }).catchError((error) {
       print(error.toString());

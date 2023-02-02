@@ -10,6 +10,6 @@ class Categories extends StatefulWidget {
 class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
-    return BuildCategoryItems();
+    return const BuildCategoryItems();
   }
 }
