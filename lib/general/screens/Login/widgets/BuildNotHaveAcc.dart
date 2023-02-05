@@ -9,23 +9,23 @@ class BuildNotHaveAcc extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text(
-            'Don\'t have an account',
-          style: TextStyle(
-            fontSize: 18
-          ),
+          'Don\'t have an account',
+          style: TextStyle(fontSize: 18),
         ),
         TextButton(
-            onPressed: (){
-              MaterialPageRoute(
-                  builder: (context)=>const Register()
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Register(),
+                ),
               );
             },
             child: CustomText(
               title: 'Register',
               fontWeight: FontWeight.bold,
               color: AppColors.primary,
-            )
-        )
+            ))
       ],
     );
   }

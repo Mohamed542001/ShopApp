@@ -19,6 +19,7 @@ class BuildLoginButton extends StatelessWidget {
                 msg: "${state.loginModel.message}",
             );
             CacheHelper.saveData(key: 'token', value: state.loginModel.data?.token).then((value) {
+              ApiNames.token = state.loginModel.data?.token;
               Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (_)=>const Home()),

@@ -8,8 +8,22 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+
+  SettingsData settingsData = SettingsData();
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            BuildSettingForm(settingsData: settingsData),
+            BuildUpdateDataButton(settingsData: settingsData,),
+            const BuildLogoutButton(),
+          ],
+        ),
+      ),
+    );
   }
 }

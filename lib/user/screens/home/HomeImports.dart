@@ -7,6 +7,7 @@ import 'package:shopapp/user/screens/categories_screen/CategoriesImports.dart';
 import 'package:shopapp/user/screens/favorites_screen/FavoritesImports.dart';
 import 'package:shopapp/user/screens/products_screen/ProductsImports.dart';
 import 'package:shopapp/user/screens/search/SearchImports.dart';
+import 'package:shopapp/user/screens/settings/SettingsImports.dart';
 
 part 'Home.dart';
 part 'HomeData.dart';

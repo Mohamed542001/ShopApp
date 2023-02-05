@@ -4,7 +4,9 @@ class Product {
       this.price, 
       this.oldPrice, 
       this.discount, 
-      this.image,});
+      this.image, 
+      this.name, 
+      this.description,});
 
   Product.fromJson(dynamic json) {
     id = json['id'];
@@ -12,12 +14,16 @@ class Product {
     oldPrice = json['old_price'];
     discount = json['discount'];
     image = json['image'];
+    name = json['name'];
+    description = json['description'];
   }
   int? id;
   int? price;
   int? oldPrice;
   int? discount;
   String? image;
+  String? name;
+  String? description;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -26,6 +32,8 @@ class Product {
     map['old_price'] = oldPrice;
     map['discount'] = discount;
     map['image'] = image;
+    map['name'] = name;
+    map['description'] = description;
     return map;
   }
 

@@ -6,7 +6,7 @@ class HomeData{
     Products(),
     Categories(),
     Favorites(),
-    Search(),
+    Settings(),
   ];
 
   var items=const [

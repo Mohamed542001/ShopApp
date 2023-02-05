@@ -8,8 +8,12 @@ class Favorites extends StatefulWidget {
 }
 
 class _FavoritesState extends State<Favorites> {
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return  const Padding(
+      padding: EdgeInsets.all(20.0),
+      child: BuildFavItem(),
+    );
   }
 }

@@ -10,13 +10,13 @@ class BuildProductSlider extends StatelessWidget {
       },
       builder: (context, state) {
         var cubit = HomeCubit.get(context);
-        return state is HomeLoadingState
+        return cubit.homeModel == null
             ? const Center(
             child: CircularProgressIndicator(
               color: Colors.deepPurple,
             ))
             :  CarouselSlider(
-          items: cubit.homeModel.data?.banners?.map((e) =>
+          items: cubit.homeModel?.data?.banners?.map((e) =>
               Image(
                 image: NetworkImage('${e.image}'),
                 width: double.infinity,

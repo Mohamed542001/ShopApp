@@ -28,32 +28,7 @@ class _BuildRegisterFormState extends State<BuildRegisterForm> {
           const SizedBox(
             height: 10,
           ),
-          CustomInputFormField(
-            controller: widget.registerData.ageController,
-            hint: 'Your Age',
-            validator: (v){
-              if(v!.isEmpty){
-                return 'Enter Your Age';
-              }
-            },
-            icon: Icons.drive_file_rename_outline,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          CustomInputFormField(
-            controller: widget.registerData.addressController,
-            hint: 'Your Address',
-            validator: (v){
-              if(v!.isEmpty){
-                return 'Enter Your Address';
-              }
-            },
-            icon: Icons.drive_file_rename_outline,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
+
           CustomInputFormField(
             controller: widget.registerData.phoneController,
             hint: 'Your Phone Number',

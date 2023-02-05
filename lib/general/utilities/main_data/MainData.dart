@@ -79,7 +79,7 @@ class MainData{
       create: (BuildContext context) => LoginCubit(),
     ),
     BlocProvider<HomeCubit>(
-      create: (BuildContext context) => HomeCubit()..getHomeData(),
+      create: (BuildContext context) => HomeCubit()..getHomeData()..getFavorites(),
     ),
     BlocProvider<CategoriesCubit>(
       create: (BuildContext context) => CategoriesCubit()..getCategoriesData(),

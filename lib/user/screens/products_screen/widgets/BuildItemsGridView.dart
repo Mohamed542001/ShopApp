@@ -1,19 +1,28 @@
 part of 'ProductsWidgetsImports.dart';
 
 class BuildItemsGridView extends StatelessWidget {
-  const BuildItemsGridView({Key? key, required this.productsData})
+  const BuildItemsGridView({Key? key, })
       : super(key: key);
-  final ProductsData productsData;
+  //final ProductsData productsData;
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeCubit, HomeState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if(state is FavoritesSuccessState){
+          if(!state.favoritesModel.status!){
+            print('object');
+            CustomToast.showSimpleToast(
+                msg: 'msg',
+            );
+          }
+        }
+      },
       builder: (context, state) {
         var cubit = HomeCubit.get(context);
-        var products = cubit.homeModel.data?.products;
+        var products = cubit.homeModel?.data?.products;
 
-        return state is HomeLoadingState
+        return cubit.homeModel ==null
             ? const Center(
                 child: CircularProgressIndicator(
                 color: Colors.deepPurple,
@@ -24,15 +33,12 @@ class BuildItemsGridView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                      padding: EdgeInsets.only(left: 10.0,right: 10,bottom: 10),
                       child: Text(
                         'New Products',
                         style: TextStyle(
                             fontSize: 26, fontWeight: FontWeight.w500),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
                     ),
                     Container(
                       color: Colors.grey[300],
@@ -44,7 +50,7 @@ class BuildItemsGridView extends StatelessWidget {
                         mainAxisSpacing: 1.0,
                         childAspectRatio: 1 / 1.44,
                         children: List.generate(
-                            cubit.homeModel.data!.products!.length,
+                            cubit.homeModel!.data!.products!.length,
                             (index) => Container(
                                   color: AppColors.white,
                                   child: Column(
@@ -56,11 +62,11 @@ class BuildItemsGridView extends StatelessWidget {
                                         children: [
                                           Image(
                                             image: NetworkImage(
-                                                '${cubit.homeModel.data?.products?[index].image}'),
+                                                '${cubit.homeModel?.data?.products?[index].image}'),
                                             width: double.infinity,
                                             height: 200,
                                           ),
-                                          if (cubit.homeModel.data
+                                          if (cubit.homeModel?.data
                                                   ?.products?[index].discount !=
                                               0)
                                             Container(
@@ -83,7 +89,7 @@ class BuildItemsGridView extends StatelessWidget {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              '${cubit.homeModel.data?.products?[index].name}',
+                                              '${cubit.homeModel?.data?.products?[index].name}',
                                               maxLines: 2,
                                               overflow: TextOverflow.ellipsis,
                                               style: const TextStyle(
@@ -94,7 +100,7 @@ class BuildItemsGridView extends StatelessWidget {
                                             Row(
                                               children: [
                                                 Text(
-                                                  '${cubit.homeModel.data?.products?[index].price}',
+                                                  '${cubit.homeModel?.data?.products?[index].price}',
                                                   style: TextStyle(
                                                     fontSize: 12,
                                                     color: AppColors.primary,
@@ -106,12 +112,12 @@ class BuildItemsGridView extends StatelessWidget {
                                                 ),
                                                 if (cubit
                                                         .homeModel
-                                                        .data
+                                                        ?.data
                                                         ?.products?[index]
                                                         .discount !=
                                                     0)
                                                   Text(
-                                                    '${cubit.homeModel.data?.products?[index].oldPrice}',
+                                                    '${cubit.homeModel?.data?.products?[index].oldPrice}',
                                                     style: TextStyle(
                                                         fontSize: 11,
                                                         color:
@@ -125,6 +131,7 @@ class BuildItemsGridView extends StatelessWidget {
                                                 const Spacer(),
                                                 IconButton(
                                                   onPressed: () {
+                                                    cubit.changeFavorites(products?[index].id);
                                                     print(products?[index].id);
                                                   },
                                                   icon: CircleAvatar(

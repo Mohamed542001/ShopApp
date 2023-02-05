@@ -9,9 +9,9 @@ class Products extends StatefulWidget {
 
 class _ProductsState extends State<Products> {
 
-  ProductsData productsData = ProductsData();
-  HomeModel homeModel = HomeModel();
-  CategoriesModel categoriesModel = CategoriesModel();
+  // ProductsData productsData = ProductsData();
+  // HomeModel homeModel = HomeModel();
+  // CategoriesModel categoriesModel = CategoriesModel();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class _ProductsState extends State<Products> {
             height: 20,
           ),
           const BuildProductsCategories(),
-          BuildItemsGridView(productsData: productsData,)
+          BuildItemsGridView()
         ],
       ),
     );
