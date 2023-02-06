@@ -15,13 +15,15 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20.0),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            BuildSettingForm(settingsData: settingsData),
-            BuildUpdateDataButton(settingsData: settingsData,),
-            const BuildLogoutButton(),
-          ],
+      child: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              BuildSettingForm(settingsData: settingsData),
+              BuildUpdateDataButton(settingsData: settingsData,),
+              const BuildLogoutButton(),
+            ],
+          ),
         ),
       ),
     );

@@ -8,10 +8,9 @@ part 'profile_state.dart';
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit() : super(ProfileInitial());
 
-
   static ProfileCubit get(context) => BlocProvider.of(context);
 
-  LoginModel userModel = LoginModel();
+  LoginModel? userModel;
 
   void getUserData() {
     emit(ProfileLoadingState());
@@ -20,8 +19,8 @@ class ProfileCubit extends Cubit<ProfileState> {
       token: ApiNames.token,
     ).then((value) {
       userModel = LoginModel.fromJson(value.data);
-      print(userModel.data?.name);
-      emit(ProfileSuccessState(userModel));
+      print('user model is ${value.data}');
+      emit(ProfileSuccessState(userModel!));
     }).catchError((error) {
       print(error.toString());
       emit(ProfileErrorState(error));
@@ -53,5 +52,4 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(UpdateProfileErrorState(error));
     });
   }
-
 }

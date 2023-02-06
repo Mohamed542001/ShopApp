@@ -1,9 +1,10 @@
-import 'Favoritesdata.dart';
+import 'package:shopapp/general/models/search_model/Product.dart';
+
 
 class Data {
   Data({
       this.currentPage, 
-      this.favoritesdata, 
+      this.product,
       this.firstPageUrl, 
       this.from, 
       this.lastPage, 
@@ -18,9 +19,9 @@ class Data {
   Data.fromJson(dynamic json) {
     currentPage = json['current_page'];
     if (json['data'] != null) {
-      favoritesdata = [];
+      product = [];
       json['data'].forEach((v) {
-        favoritesdata?.add(Favoritesdata.fromJson(v));
+        product?.add(Product.fromJson(v));
       });
     }
     firstPageUrl = json['first_page_url'];
@@ -35,7 +36,7 @@ class Data {
     total = json['total'];
   }
   int? currentPage;
-  List<Favoritesdata>? favoritesdata;
+  List<Product>? product;
   String? firstPageUrl;
   int? from;
   int? lastPage;
@@ -50,8 +51,8 @@ class Data {
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['current_page'] = currentPage;
-    if (favoritesdata != null) {
-      map['data'] = favoritesdata?.map((v) => v.toJson()).toList();
+    if (product != null) {
+      map['data'] = product?.map((v) => v.toJson()).toList();
     }
     map['first_page_url'] = firstPageUrl;
     map['from'] = from;

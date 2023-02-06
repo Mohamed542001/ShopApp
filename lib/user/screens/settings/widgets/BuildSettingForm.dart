@@ -8,17 +8,19 @@ class BuildSettingForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProfileCubit(),
+      create: (context) => ProfileCubit()..getUserData(),
       child: BlocConsumer<ProfileCubit, ProfileState>(
         listener: (context, state) {
-          if (state is ProfileSuccessState) {}
+          if (state is ProfileSuccessState) {
+            settingsData.nameController.text = state.userModel!.data!.name!;
+            settingsData.emailController.text = state.userModel!.data!.email!;
+            settingsData.phoneController.text = state.userModel!.data!.phone!;
+          }
         },
         builder: (context, state) {
           var cubit = ProfileCubit.get(context);
-          settingsData.nameController.text = cubit.userModel.data!.name!;
-          settingsData.emailController.text = cubit.userModel.data!.email!;
-          settingsData.phoneController.text = cubit.userModel.data!.phone!;
-          return state is ProfileLoadingState
+
+          return cubit.userModel == null
               ? const Center(
                   child: CircularProgressIndicator(
                   color: Colors.deepPurple,
@@ -27,8 +29,7 @@ class BuildSettingForm extends StatelessWidget {
                   key: settingsData.formKey,
                   child: Column(
                     children: [
-
-                      if(state is UpdateProfileSuccessState)
+                      if (state is UpdateProfileSuccessState)
                         LinearProgressIndicator(
                           color: AppColors.primary,
                         ),

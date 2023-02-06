@@ -1,3 +1,7 @@
 part of 'SearchImports.dart';
 
-class SearchData{}
+class SearchData{
+  final formKey = GlobalKey<FormState>();
+
+  TextEditingController searchController = TextEditingController();
+}

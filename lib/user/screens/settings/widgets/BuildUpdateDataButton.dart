@@ -21,6 +21,10 @@ class BuildUpdateDataButton extends StatelessWidget {
                     name: settingsData.nameController.text,
                     email: settingsData.emailController.text,
                     phone: settingsData.phoneController.text);
+                CustomToast.showSimpleToast(msg: 'Success');
+              }else{
+                CustomToast.showSimpleToast(msg: 'There is a problem');
+
               }
             },
           );

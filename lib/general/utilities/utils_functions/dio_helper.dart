@@ -25,6 +25,7 @@ class DioHelper {
       'Authorization': token,
     };
     return await dio.get(
+      // المفروض هنا تعمل كونكاتينيشن مع ال base
       url,
       queryParameters: query,
     );

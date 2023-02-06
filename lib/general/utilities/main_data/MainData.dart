@@ -6,17 +6,18 @@ class MainData{
     primarySwatch: Colors.blueGrey,
     floatingActionButtonTheme:
     FloatingActionButtonThemeData(backgroundColor: AppColors.primary),
-    scaffoldBackgroundColor: Colors.black,
-    appBarTheme: const AppBarTheme(
+    scaffoldBackgroundColor: Colors.white
+    ,
+    appBarTheme:  AppBarTheme(
         iconTheme: IconThemeData(
-          color: Colors.white,
+          color: AppColors.primary,
         ),
         titleSpacing: 20,
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarBrightness: Brightness.light,
           statusBarColor: Colors.black,
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         elevation: 0,
         titleTextStyle: TextStyle(
             fontFamily: 'Janna',
@@ -56,7 +57,7 @@ class MainData{
         ),
         titleTextStyle: TextStyle(
             fontFamily: 'Janna',
-            color: Colors.black,
+            color: Colors.white,
             fontSize: 20,
             fontWeight: FontWeight.bold)),
     textTheme: const TextTheme(

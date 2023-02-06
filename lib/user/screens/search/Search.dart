@@ -8,13 +8,19 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
+  
+  SearchData searchData = SearchData();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Center(
-        child: CustomText(
-          title: 'Search',
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: [
+            BuildSearchForm(searchData: searchData)
+            ],
         ),
       ),
     );
