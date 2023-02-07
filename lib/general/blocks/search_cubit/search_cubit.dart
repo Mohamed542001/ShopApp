@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shopapp/general/models/favorites_model/FavoritesModel.dart';
 import 'package:shopapp/general/models/search_model/SearchModel.dart';
 import 'package:shopapp/general/utilities/utils_functions/ApiNames.dart';
 import 'package:shopapp/general/utilities/utils_functions/dio_helper.dart';

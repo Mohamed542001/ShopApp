@@ -92,8 +92,8 @@ class Data {
 
 class SearchData {
   int? id;
-  double? price;
-  double? oldPrice;
+  dynamic price;
+  dynamic oldPrice;
   int? discount;
   String? image;
   dynamic name;

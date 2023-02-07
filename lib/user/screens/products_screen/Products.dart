@@ -19,12 +19,12 @@ class _ProductsState extends State<Products> {
       physics: const BouncingScrollPhysics(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const BuildProductSlider(),
-          const SizedBox(
+        children: const [
+          BuildProductSlider(),
+          SizedBox(
             height: 20,
           ),
-          const BuildProductsCategories(),
+          BuildProductsCategories(),
           BuildItemsGridView()
         ],
       ),

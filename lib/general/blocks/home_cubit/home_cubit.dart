@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shopapp/general/blocks/home_cubit/home_cubit.dart';
 import 'package:shopapp/general/models/favorites_model/FavoritesModel.dart';
 import 'package:shopapp/general/models/favorites_model/favorites/FavoritesModel.dart';
 import 'package:shopapp/general/models/home_model/HomeModel.dart';
@@ -67,8 +64,6 @@ class HomeCubit extends Cubit<HomeState> {
 
       if (!favoritesModel.status!) {
         favorites[productId] = !favorites[productId]!;
-      } else{
-        getFavorites();
       }
 
       emit(FavoritesSuccessState(favoritesModel));
@@ -83,7 +78,7 @@ class HomeCubit extends Cubit<HomeState> {
   void getFavorites() {
     emit(FavoritesScreenLoadingState());
     DioHelper.getData(
-      url:ApiNames.favorites,
+      url: ApiNames.favorites,
       token: ApiNames.token,
     ).then((value) {
       favoriteScreenModel = FavoriteScreenModel.fromJson(value.data);

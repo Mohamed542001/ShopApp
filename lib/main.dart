@@ -8,52 +8,52 @@ import 'package:shopapp/general/utilities/utils_functions/ApiNames.dart';
 import 'package:shopapp/general/utilities/utils_functions/cache_helper.dart';
 import 'package:shopapp/general/utilities/utils_functions/dio_helper.dart';
 import 'package:shopapp/user/screens/home/HomeImports.dart';
-void main() async{
+
+void main() async {
   Bloc.observer = MyBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
   await CacheHelper.init();
-  ApiNames.token= CacheHelper.getData(key: 'token');
+  ApiNames.token = CacheHelper.getData(key: 'token');
 
-    Widget widget;
+  Widget widget;
 
-    dynamic onBoarding = CacheHelper.getData(key: 'onBoarding');
-    var token = ApiNames.token;
-    token = CacheHelper.getData(key: 'token');
-    print('token = $token');
+  dynamic onBoarding = CacheHelper.getData(key: 'onBoarding');
+  var token = ApiNames.token;
+  token = CacheHelper.getData(key: 'token');
+  print('token = $token');
 
-    if(onBoarding != null){
-      if(ApiNames.token != null){
-        widget = const Home();
-      }else{
-        widget = const Login();
-      }
-    }else{
-      widget=const OnBoarding();
+  if (onBoarding != null) {
+    if (ApiNames.token != null) {
+      widget = const Home();
+    } else {
+      widget = const Login();
     }
+  } else {
+    widget = const OnBoarding();
+  }
 
-    print(onBoarding);
+  print(onBoarding);
 
-  runApp(MyApp(startWidget: widget,));
+  runApp(MyApp(
+    startWidget: widget,
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key,this.startWidget});
-  
-  final Widget? startWidget;
+  const MyApp({super.key, this.startWidget});
 
+  final Widget? startWidget;
 
   @override
   Widget build(BuildContext context) {
-
     return MultiBlocProvider(
       providers: MainData.providers(context),
       child: MaterialApp(
-          theme: MainData.lightTheme,
-          darkTheme: MainData.darkTheme,
-          debugShowCheckedModeBanner: false,
-          home: startWidget,
-
+        theme: MainData.lightTheme,
+        darkTheme: MainData.darkTheme,
+        debugShowCheckedModeBanner: false,
+        home: startWidget,
       ),
     );
   }

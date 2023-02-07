@@ -46,8 +46,8 @@ class BuildItemsGridView extends StatelessWidget {
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         crossAxisCount: 2,
-                        crossAxisSpacing: 2.0,
-                        mainAxisSpacing: 1.0,
+                        crossAxisSpacing: 5.0,
+                        mainAxisSpacing: 5.0,
                         children: List.generate(
                             cubit.homeModel!.data!.products!.length,
                             (index) => Container(

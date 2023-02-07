@@ -6,30 +6,27 @@ class BuildSearchForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => SearchCubit(),
-      child: BlocConsumer<SearchCubit,SearchState>(
-        listener: (context, state) {},
-        builder: (context,state){
-          return Form(
-            key: searchData.formKey,
-            child: CustomInputFormField(
-              controller: searchData.searchController,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Enter text to search';
-                }
-                return null;
-              },
-              labeltxt: 'Name',
-              prefix: const Icon(Icons.search),
-              onFieldSubmitted: (text){
-                SearchCubit.get(context).search(text);
-              },
-            ),
-          );
-        },
-      ),
+    return BlocConsumer<SearchCubit, SearchState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return Form(
+          key: searchData.formKey,
+          child: CustomInputFormField(
+            controller: searchData.searchController,
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'Enter text to search';
+              }
+              return null;
+            },
+            labeltxt: 'Name',
+            prefix: const Icon(Icons.search),
+            onFieldSubmitted: (text) {
+              SearchCubit.get(context).search(text);
+            },
+          ),
+        );
+      },
     );
   }
 }

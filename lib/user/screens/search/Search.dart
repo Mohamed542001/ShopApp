@@ -20,7 +20,7 @@ class _SearchState extends State<Search> {
         child: Column(
           children: [
             BuildSearchForm(searchData: searchData),
-            BuildSearchItems(),
+            const Expanded(child: BuildSearchItems()),
             ],
         ),
       ),

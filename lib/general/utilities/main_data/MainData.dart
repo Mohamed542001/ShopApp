@@ -1,14 +1,13 @@
 part of 'MainDataImports.dart';
 
-class MainData{
+class MainData {
   static ThemeData darkTheme = ThemeData(
     fontFamily: 'Janna',
     primarySwatch: Colors.blueGrey,
     floatingActionButtonTheme:
-    FloatingActionButtonThemeData(backgroundColor: AppColors.primary),
-    scaffoldBackgroundColor: Colors.white
-    ,
-    appBarTheme:  AppBarTheme(
+        FloatingActionButtonThemeData(backgroundColor: AppColors.primary),
+    scaffoldBackgroundColor: Colors.white,
+    appBarTheme: AppBarTheme(
         iconTheme: IconThemeData(
           color: AppColors.primary,
         ),
@@ -26,7 +25,7 @@ class MainData{
             fontWeight: FontWeight.bold)),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       type: BottomNavigationBarType.fixed,
-      selectedItemColor:Colors.blue ,
+      selectedItemColor: Colors.blue,
       unselectedItemColor: Colors.grey,
       elevation: 30,
       backgroundColor: Colors.red,
@@ -35,14 +34,17 @@ class MainData{
       bodyText1: TextStyle(
           fontWeight: FontWeight.w600, fontSize: 18, color: Colors.white),
       subtitle1: TextStyle(
-          fontWeight: FontWeight.w600, fontSize: 4, color: Colors.white,height: 1.3),
+          fontWeight: FontWeight.w600,
+          fontSize: 4,
+          color: Colors.white,
+          height: 1.3),
     ),
   );
   static ThemeData lightTheme = ThemeData(
     fontFamily: 'Janna',
     primarySwatch: Colors.blueGrey,
     floatingActionButtonTheme:
-    FloatingActionButtonThemeData(backgroundColor: AppColors.primary),
+        FloatingActionButtonThemeData(backgroundColor: AppColors.primary),
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: const AppBarTheme(
         titleSpacing: 20,
@@ -64,7 +66,10 @@ class MainData{
       bodyText1: TextStyle(
           fontWeight: FontWeight.w600, fontSize: 18, color: Colors.black),
       subtitle1: TextStyle(
-          fontWeight: FontWeight.w600, fontSize: 14, color: Colors.black,height: 1.3),
+          fontWeight: FontWeight.w600,
+          fontSize: 14,
+          color: Colors.black,
+          height: 1.3),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       type: BottomNavigationBarType.fixed,
@@ -75,15 +80,21 @@ class MainData{
     ),
   );
 
-  static List<BlocProvider> providers(BuildContext context) =>[
-    BlocProvider<LoginCubit>(
-      create: (BuildContext context) => LoginCubit(),
-    ),
-    BlocProvider<HomeCubit>(
-      create: (BuildContext context) => HomeCubit()..getHomeData()..getFavorites(),
-    ),
-    BlocProvider<CategoriesCubit>(
-      create: (BuildContext context) => CategoriesCubit()..getCategoriesData(),
-    ),
-  ];
+  static List<BlocProvider> providers(BuildContext context) => [
+        BlocProvider<LoginCubit>(
+          create: (BuildContext context) => LoginCubit(),
+        ),
+        BlocProvider<HomeCubit>(
+          create: (BuildContext context) => HomeCubit()
+            ..getHomeData()
+            ..getFavorites(),
+        ),
+        BlocProvider<SearchCubit>(
+          create: (BuildContext context) => SearchCubit(),
+        ),
+        BlocProvider<CategoriesCubit>(
+          create: (BuildContext context) =>
+              CategoriesCubit()..getCategoriesData(),
+        ),
+      ];
 }
