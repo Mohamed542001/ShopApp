@@ -18,7 +18,7 @@ class BuildSearchItems extends StatelessWidget {
               ))
               : ListView.separated(
             itemCount:
-            cubit.searchModel!.data!.product!.length,
+            cubit.searchModel!.data!.searchData!.length,
             separatorBuilder: (context, i) =>
                 Divider(
                   thickness: 1,
@@ -37,11 +37,11 @@ class BuildSearchItems extends StatelessWidget {
                           height: double.infinity,
                           width: 150,
                           child: Image.network(
-                            '${cubit.searchModel!.data!.product![i].image}',
+                            '${cubit.searchModel!.data!.searchData![i].image}',
                           ),
                         ),
                         if (cubit.searchModel!.data!
-                            .product![i].discount !=
+                            .searchData![i].discount !=
                             0)
                           Container(
                             color: Colors.red,
@@ -66,7 +66,7 @@ class BuildSearchItems extends StatelessWidget {
                           children: [
                             Text(
                               cubit.searchModel!.data!
-                                  .product![i].name!,
+                                  .searchData![i].name!,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
@@ -78,7 +78,7 @@ class BuildSearchItems extends StatelessWidget {
                             Spacer(),
                             Text(
                               cubit.searchModel!.data!
-                                  .product![i].description!,
+                                  .searchData![i].description!,
                               maxLines: 3,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
@@ -91,7 +91,7 @@ class BuildSearchItems extends StatelessWidget {
                             Row(
                               children: [
                                 Text(
-                                  '${cubit.searchModel!.data!.product![i]
+                                  '${cubit.searchModel!.data!.searchData![i]
                                       .price}',
                                   style: TextStyle(
                                     fontSize: 12,
@@ -105,11 +105,11 @@ class BuildSearchItems extends StatelessWidget {
                                 if (cubit
                                     .searchModel!
                                     .data!
-                                    .product![i]
+                                    .searchData![i]
                                     .discount !=
                                     0)
                                   Text(
-                                    '${cubit.searchModel!.data!.product![i]
+                                    '${cubit.searchModel!.data!.searchData![i]
                                         .oldPrice}',
                                     style: TextStyle(
                                         fontSize: 12,
@@ -118,43 +118,43 @@ class BuildSearchItems extends StatelessWidget {
                                         decoration:
                                         TextDecoration.lineThrough),
                                   ),
-                                // BlocProvider(
-                                //   create: (context) => HomeCubit(),
-                                //   child: BlocConsumer<HomeCubit, HomeState>(
-                                //     listener: (context, state) {
-                                //       // TODO: implement listener
-                                //     },
-                                //     builder: (context, state) {
-                                //       var cubit = HomeCubit.get(context);
-                                //       return IconButton(
-                                //         onPressed: () {
-                                //           cubit.changeFavorites(cubit
-                                //               .favoriteScreenModel!
-                                //               .data!
-                                //               .favoritesdata![i]
-                                //               .product!
-                                //               .id);
-                                //           // print(products![index].id);
-                                //         },
-                                //         icon: CircleAvatar(
-                                //           radius: 20,
-                                //           backgroundColor: cubit.favorites[cubit
-                                //               .favoriteScreenModel!
-                                //               .data!
-                                //               .favoritesdata![i]
-                                //               .product!
-                                //               .id]!
-                                //               ? AppColors.primary
-                                //               : AppColors.formBgColor,
-                                //           child: Icon(
-                                //             Icons.favorite_border,
-                                //             color: AppColors.white,
-                                //           ),
-                                //         ),
-                                //       );
-                                //     },
-                                //   ),
-                                // ),
+                                BlocProvider(
+                                  create: (context) => HomeCubit(),
+                                  child: BlocConsumer<HomeCubit, HomeState>(
+                                    listener: (context, state) {
+                                      // TODO: implement listener
+                                    },
+                                    builder: (context, state) {
+                                      var cubit = HomeCubit.get(context);
+                                      return IconButton(
+                                        onPressed: () {
+                                          cubit.changeFavorites(cubit
+                                              .favoriteScreenModel!
+                                              .data!
+                                              .favoritesdata![i]
+                                              .product!
+                                              .id);
+                                          // print(products![index].id);
+                                        },
+                                        icon: CircleAvatar(
+                                          radius: 20,
+                                          backgroundColor: cubit.favorites[cubit
+                                              .favoriteScreenModel!
+                                              .data!
+                                              .favoritesdata![i]
+                                              .product!
+                                              .id]!
+                                              ? AppColors.primary
+                                              : AppColors.formBgColor,
+                                          child: Icon(
+                                            Icons.favorite_border,
+                                            color: AppColors.white,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
                               ],
                             ),
                           ],

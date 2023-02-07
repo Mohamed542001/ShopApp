@@ -13,13 +13,13 @@ class MainData{
           color: AppColors.primary,
         ),
         titleSpacing: 20,
-        systemOverlayStyle: SystemUiOverlayStyle(
+        systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarBrightness: Brightness.light,
           statusBarColor: Colors.black,
         ),
         backgroundColor: Colors.white,
         elevation: 0,
-        titleTextStyle: TextStyle(
+        titleTextStyle: const TextStyle(
             fontFamily: 'Janna',
             color: Colors.white,
             fontSize: 20,

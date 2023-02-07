@@ -19,7 +19,8 @@ class _SearchState extends State<Search> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            BuildSearchForm(searchData: searchData)
+            BuildSearchForm(searchData: searchData),
+            BuildSearchItems(),
             ],
         ),
       ),
