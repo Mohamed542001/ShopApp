@@ -1,11 +1,11 @@
 import 'Product.dart';
 
-class Favoritesdata {
-  Favoritesdata({
+class FavoritesData {
+  FavoritesData({
       this.id, 
       this.product,});
 
-  Favoritesdata.fromJson(dynamic json) {
+  FavoritesData.fromJson(dynamic json) {
     id = json['id'];
     product = json['product'] != null ? Product.fromJson(json['product']) : null;
   }
@@ -14,7 +14,7 @@ class Favoritesdata {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['id'] = id;
+    map['id'] = id!.toDouble();
     if (product != null) {
       map['product'] = product?.toJson();
     }

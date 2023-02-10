@@ -46,7 +46,8 @@ class BuildProductsCategories extends StatelessWidget {
                     child: Stack(
                       alignment: Alignment.bottomCenter,
                       children:  [
-                        Image(
+                        cubit.model.data?.modelData?[i].image==null?const Placeholder()
+                        :Image(
                           image: NetworkImage(
                             '${cubit.model.data?.modelData?[i].image}',
                           ),

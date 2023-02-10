@@ -9,14 +9,14 @@ class BuildFavItem extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         var cubit = HomeCubit.get(context);
-        return state is FavoritesScreenLoadingState
+        return cubit.favoriteScreenModel == null
             ? const Center(
                 child: CircularProgressIndicator(
                 color: Colors.deepPurple,
               ))
             : ListView.separated(
                 itemCount:
-                    cubit.favoriteScreenModel!.data!.favoritesdata!.length,
+                    cubit.favoriteScreenModel!.data!.favoritesData!.length,
                 separatorBuilder: (context, i) => Divider(
                   thickness: 1,
                   color: AppColors.formBgColor,
@@ -33,12 +33,16 @@ class BuildFavItem extends StatelessWidget {
                             SizedBox(
                               height: double.infinity,
                               width: 150,
-                              child: Image.network(
-                                '${cubit.favoriteScreenModel!.data!.favoritesdata![i].product!.image}',
-                              ),
+                              child: cubit.favoriteScreenModel!.data!
+                                          .favoritesData![i].product!.image ==
+                                      null
+                                  ? const Placeholder()
+                                  : Image.network(
+                                      '${cubit.favoriteScreenModel!.data!.favoritesData![i].product!.image}',
+                                    ),
                             ),
                             if (cubit.favoriteScreenModel!.data!
-                                    .favoritesdata![i].product!.discount !=
+                                    .favoritesData![i].product!.discount !=
                                 0)
                               Container(
                                 color: Colors.red,
@@ -63,7 +67,7 @@ class BuildFavItem extends StatelessWidget {
                               children: [
                                 Text(
                                   cubit.favoriteScreenModel!.data!
-                                      .favoritesdata![i].product!.name!,
+                                      .favoritesData![i].product!.name!,
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                   style: const TextStyle(
@@ -74,8 +78,12 @@ class BuildFavItem extends StatelessWidget {
                                 ),
                                 Spacer(),
                                 Text(
-                                  cubit.favoriteScreenModel!.data!
-                                      .favoritesdata![i].product!.description!,
+                                  cubit
+                                      .favoriteScreenModel!
+                                      .data!
+                                      .favoritesData![i]
+                                      .product!
+                                      .description!,
                                   maxLines: 3,
                                   overflow: TextOverflow.ellipsis,
                                   style: const TextStyle(
@@ -88,7 +96,7 @@ class BuildFavItem extends StatelessWidget {
                                 Row(
                                   children: [
                                     Text(
-                                      '${cubit.favoriteScreenModel!.data!.favoritesdata![i].product!.price}',
+                                      '${cubit.favoriteScreenModel!.data!.favoritesData![i].product!.price}',
                                       style: TextStyle(
                                         fontSize: 12,
                                         color: AppColors.primary,
@@ -96,17 +104,15 @@ class BuildFavItem extends StatelessWidget {
                                       ),
                                     ),
                                     const Spacer(),
-
-
                                     if (cubit
                                             .favoriteScreenModel!
                                             .data!
-                                            .favoritesdata![i]
+                                            .favoritesData![i]
                                             .product!
                                             .discount !=
                                         0)
                                       Text(
-                                        '${cubit.favoriteScreenModel!.data!.favoritesdata![i].product!.oldPrice}',
+                                        '${cubit.favoriteScreenModel!.data!.favoritesData![i].product!.oldPrice}',
                                         style: TextStyle(
                                             fontSize: 12,
                                             color: AppColors.textColor,
@@ -119,7 +125,7 @@ class BuildFavItem extends StatelessWidget {
                                         cubit.changeFavorites(cubit
                                             .favoriteScreenModel!
                                             .data!
-                                            .favoritesdata![i]
+                                            .favoritesData![i]
                                             .product!
                                             .id);
                                         // print(products![index].id);
@@ -127,11 +133,11 @@ class BuildFavItem extends StatelessWidget {
                                       icon: CircleAvatar(
                                         radius: 20,
                                         backgroundColor: cubit.favorites[cubit
-                                                .favoriteScreenModel!
-                                                .data!
-                                                .favoritesdata![i]
-                                                .product!
-                                                .id]!
+                                            .favoriteScreenModel!
+                                            .data!
+                                            .favoritesData![i]
+                                            .product!
+                                            .id]??true
                                             ? AppColors.primary
                                             : AppColors.formBgColor,
                                         child: Icon(

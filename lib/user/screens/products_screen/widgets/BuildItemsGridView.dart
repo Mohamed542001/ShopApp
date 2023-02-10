@@ -10,7 +10,7 @@ class BuildItemsGridView extends StatelessWidget {
     return BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {
         if(state is FavoritesSuccessState){
-          if(!state.favoritesModel.status!){
+          if(!state.favoriteScreenModel!.status!){
             print('object');
             CustomToast.showSimpleToast(
                 msg: 'msg',
@@ -60,7 +60,9 @@ class BuildItemsGridView extends StatelessWidget {
                                         child: Stack(
                                           alignment: Alignment.bottomLeft,
                                           children: [
-                                            Image(
+                                            cubit.homeModel?.data?.products?[index].image==null
+                                                ?const Placeholder()
+                                                :Image(
                                               image: NetworkImage(
                                                   '${cubit.homeModel?.data?.products?[index].image}'),
                                               width: double.infinity,

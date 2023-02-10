@@ -15,9 +15,9 @@ class HomeChangeFavoriteButtonState extends HomeState{}
 
 class FavoritesLoadingState extends HomeState{}
 class FavoritesSuccessState extends HomeState{
-  final FavoritesModel favoritesModel;
+  final FavoriteScreenModel? favoriteScreenModel;
 
-  FavoritesSuccessState(this.favoritesModel);
+  FavoritesSuccessState(this.favoriteScreenModel);
 }
 class FavoritesErrorState extends HomeState{
   final String error;

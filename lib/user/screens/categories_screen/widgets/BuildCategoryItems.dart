@@ -22,7 +22,9 @@ class BuildCategoryItems extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: Row(
                   children: [
-                    Image(
+                    cubit.model.data?.modelData?[i].image==null
+                        ?const Placeholder()
+                    :Image(
                       image: NetworkImage(
                         '${cubit.model.data?.modelData?[i].image}',),
                       width: 100,

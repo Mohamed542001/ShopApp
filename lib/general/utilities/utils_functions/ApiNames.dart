@@ -1,6 +1,5 @@
 class ApiNames{
   static const String baseUrl = "https://student.valuxapps.com/api/";
-  //https://student.valuxapps.com/api/search
   static String? token = '';
 
 

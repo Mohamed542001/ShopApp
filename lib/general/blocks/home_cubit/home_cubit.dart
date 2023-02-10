@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shopapp/general/models/favorites_model/FavoritesModel.dart';
 import 'package:shopapp/general/models/favorites_model/favorites/FavoritesModel.dart';
 import 'package:shopapp/general/models/home_model/HomeModel.dart';
 import 'package:shopapp/general/utilities/utils_functions/ApiNames.dart';
@@ -47,8 +46,6 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
-  FavoritesModel favoritesModel = FavoritesModel();
-
   changeFavorites(int? productId) {
     favorites[productId] = !favorites[productId]!;
 
@@ -59,14 +56,14 @@ class HomeCubit extends Cubit<HomeState> {
             data: {"product_id": productId},
             token: ApiNames.token)
         .then((value) {
-      favoritesModel = FavoritesModel.fromJson(value.data);
+      favoriteScreenModel = FavoriteScreenModel.fromJson(value.data);
       print(value.data);
 
-      if (!favoritesModel.status!) {
+      if (!favoriteScreenModel!.status!) {
         favorites[productId] = !favorites[productId]!;
       }
 
-      emit(FavoritesSuccessState(favoritesModel));
+      emit(FavoritesSuccessState(favoriteScreenModel!));
     }).catchError((error) {
       favorites[productId] = !favorites[productId]!;
       emit(FavoritesErrorState(error));
@@ -82,10 +79,15 @@ class HomeCubit extends Cubit<HomeState> {
       token: ApiNames.token,
     ).then((value) {
       favoriteScreenModel = FavoriteScreenModel.fromJson(value.data);
+      // favoriteScreenModel!.data!.favoritesData!.forEach((element) {
+      //   favorites.addAll({
+      //     element.product!.id: false,
+      //   });
+      // });
       print('fav data is ${value.data.toString()}');
       emit(FavoritesScreenSuccessState(favoriteScreenModel!));
     }).catchError((error) {
-      print(error.toString());
+      print('error is ${error.toString()}');
       emit(FavoritesScreenErrorState(error));
     });
   }

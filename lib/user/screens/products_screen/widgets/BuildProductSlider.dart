@@ -17,7 +17,8 @@ class BuildProductSlider extends StatelessWidget {
             ))
             :  CarouselSlider(
           items: cubit.homeModel?.data?.banners?.map((e) =>
-              Image(
+          e.image== null?const Placeholder()
+              :Image(
                 image: NetworkImage('${e.image}'),
                 width: double.infinity,
                 fit: BoxFit.cover,
